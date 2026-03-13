@@ -18,6 +18,6 @@ COPY entrypoint.sh run.sh ./
 RUN chmod +x entrypoint.sh run.sh
 
 HEALTHCHECK --interval=60s --timeout=5s --retries=3 \
-    CMD pgrep cron > /dev/null && test -f /app/.env
+    CMD test -f /app/.env && test -f /app/run.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]
